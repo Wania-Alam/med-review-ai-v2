@@ -1,27 +1,26 @@
 {
-  "$schema": "https://vercel.sh",
-  "services": {
-    "backend": {
-      "root": "backend",
-      "framework": "express"
+  "version": 2,
+  "builds": [
+    {
+      "src": "backend/server.js",
+      "use": "@vercel/node"
     },
-    "frontend": {
-      "root": "frontend",
-      "framework": "vite"
+    {
+      "src": "frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
     }
-  },
+  ],
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": {
-        "service": "backend"
-      }
+      "destination": "backend/server.js"
     },
     {
       "source": "/(.*)",
-      "destination": {
-        "service": "frontend"
-      }
+      "destination": "frontend/$1"
     }
   ]
 }
