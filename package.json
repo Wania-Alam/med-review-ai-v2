@@ -1,0 +1,9 @@
+{
+  "name": "med-review-ai",
+  "private": true,
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "build": "npm --prefix frontend install --include=dev && npm --prefix frontend run build && npm --prefix backend install",
+    "start": "node backend/server.js"
+  }
+}
